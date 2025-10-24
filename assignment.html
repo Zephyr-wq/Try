@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Data Types</title>
+</head>
+<body style="background-color:azure">
+    <h2>These are the 8 different datatypes Javascript has to offer</h2>
+    <p id="string"></p>
+    <p id="number"></p>
+    <p id="bigint"></p>
+    <p id="boolean"></p>
+    <p id="object"></p>
+    <p id="array"></p>
+    <p id="date"></p>
+    <p id="null"></p>
+    <p id="movie"></p>
+
+    <script>
+        let color = "Yellow";
+        const firstlastName = "Carl Johnson";
+        const height = "5'7";
+        const weight = 120;
+        const x = 12204763868936458763;
+        const y = BigInt(12204763868936458763);
+        const z = 67;
+        let a = true;
+        let b = false;
+        const person = {firstName:"Bennet", lastName:"Igwe"};
+        const cars = ["Saab", " ", "Volvo", "and", "BMW"];
+        const date = new Date("2008-10-19");
+        let c = null;
+        let d = null;
+        const e = Symbol();
+        const f = Symbol();
+
+        document.getElementById("string").innerHTML = "My name is" + " " + firstlastName + " and my favorite color is " + color + ".";
+
+        document.getElementById("number").innerHTML = "I am" + " " + height + "in height" + " " + "and weigh only" + " " + weight + " " + "pounds.";
+        
+        document.getElementById('bigint').innerHTML= 'I have built over' + ' ' + y + ' ' + 'projects in the span of' + ' ' + z + ' ' + 'years.'
+
+        document.getElementById('boolean').innerHTML= 'Do you think it is' + ' ' + a + ' ' + 'or' + ' ' + b + '?';
+
+        document.getElementById('object').innerHTML= 'You guys should not forget my first and last name is' + ' ' + person;
+        document.getElementById('object').style.color= 'red';
+        document.getElementById('object').style.fontSize= '10px';
+
+        document.getElementById('array').innerHTML= 'My favourite cars are' + ' ' + cars;
+
+        document.getElementById('date').innerHTML= 'I was born in' + ' ' + date
+
+        document.getElementById('null').innerHTML= 'What does' + ' ' + c + ' ' + 'and' + ' ' + d + ' ' + 'mean?'
+
+        document.getElementById('movie').innerHTML= 'What does' + ' ' + e + ' ' + 'and' + ' ' + f + ' ' + 'mean?'
+        
+    </script>
+</body>
+</html>
