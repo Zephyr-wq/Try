@@ -25,6 +25,34 @@
       transition: background 0.5s ease-in-out, color 0.3s;
     }
 
+    /* ===== Top Bar (To-do + Mode Toggle) ===== */
+    .top-bar {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 10;
+    }
+
+    /* To-do List Link */
+    .todo-link {
+      color: #ffa500;
+      text-decoration: none;
+      font-weight: 600;
+      background: #111;
+      padding: 8px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .todo-link:hover {
+      background: #ffa500;
+      color: #000;
+      transform: scale(1.1);
+    }
+
     /* ===== Calculator Body ===== */
     .calculator {
       background: linear-gradient(145deg, #121212, #1a1a1a);
@@ -116,9 +144,6 @@
 
     /* ===== Toggle Button ===== */
     .mode-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
       background: #ffa500;
       color: #000;
       border: none;
@@ -179,21 +204,29 @@
         height: 60px;
         font-size: 1.2rem;
       }
+      .top-bar {
+        flex-direction: column;
+        right: 10px;
+        top: 10px;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Light/Dark Mode Button -->
-  <button class="mode-toggle" id="modeToggle">🌙 Dark Mode</button>
+  <!-- Top bar with To-Do link and Dark/Light toggle -->
+  <div class="top-bar">
+    <a href="To-do.html" class="todo-link">📝 To-Do List</a>
+    <button class="mode-toggle" id="modeToggle">🌙 Dark Mode</button>
+  </div>
 
+  <!-- Calculator -->
   <div class="calculator text-center">
-    <!-- Display -->
     <input type="text" id="display" class="display" readonly />
 
-    <!-- Button Layout -->
     <div class="btn-row">
       <button class="btn-custom btn-clear" onclick="clearDisplay()">C</button>
-      <button class="btn-custom btn-clear" onclick="calculateSquareRoot(); appendToDisplay('√(')">√</button>
+      <button class="btn-custom btn-clear" onclick="calculateSquareRoot()">√</button>
       <button class="btn-custom btn-clear" style="flex: 1" onclick="calculateResult()">=</button>
     </div>
 
@@ -247,8 +280,22 @@
 
     function calculateResult() {
       try {
-        const result = eval(display.value);
-        display.value = result;
+        let expression = display.value.replace(/√/g, 'Math.sqrt');
+        display.value = eval(expression);
+      } catch {
+        display.value = 'Error';
+      }
+    }
+
+    function calculateSquareRoot() {
+      try {
+        const value = parseFloat(display.value);
+        if (isNaN(value)) return;
+        if (value < 0) {
+          display.value = 'Error';
+        } else {
+          display.value = Math.sqrt(value);
+        }
       } catch {
         display.value = 'Error';
       }
@@ -271,27 +318,6 @@
       modeToggle.textContent = isLightMode ? '🌞 Light Mode' : '🌙 Dark Mode';
       localStorage.setItem('calculatorTheme', isLightMode ? 'light' : 'dark');
     });
-
-    function calculateSquareRoot() {
-    const display = document.getElementById("display");
-    let value = parseFloat(display.value);
-
-   if (value < 0) {
-    display.value = "Error";
-   } else {
-    display.value = Math.sqrt(value);
-  }
-
-  function calculate() {
-  const display = document.getElementById("display");
-  let expression = display.value.replace(/√/g, "Math.sqrt");
-  try {
-    display.value = eval(expression);
-  } catch {
-    display.value = "Error";
-  }
- }
-}
   </script>
 </body>
 </html>
