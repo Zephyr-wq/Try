@@ -193,7 +193,7 @@
   <!-- ===== Navbar ===== -->
   <nav class="navbar">
     <a href="#">To-Do List</a>
-    <button class="mode-toggle" id="modeToggle">🌙 Dark Mode</button>
+    <button class="mode-toggle" id="modeToggle">🌙 Blind Mode</button>
   </nav>
 
   <!-- ===== To-Do Section ===== -->
@@ -295,7 +295,7 @@
     modeToggle.addEventListener("click", () => {
       document.body.classList.toggle("light-mode");
       if (document.body.classList.contains("light-mode")) {
-        modeToggle.textContent = "🌙 Dark Mode";
+        modeToggle.textContent = "🌙 Bliind Mode";
         localStorage.setItem("mode", "light");
       } else {
         modeToggle.textContent = "☀️ Light Mode";
