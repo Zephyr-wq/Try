@@ -149,7 +149,7 @@
       color: #33ffcc;
       transform: scale(1.3);
     }
-
+    
     /* ===== Light Mode ===== */
     body.light-mode {
       background: linear-gradient(135deg, #f8f9fa, #ffffff);
@@ -192,8 +192,8 @@
 <body>
   <!-- ===== Navbar ===== -->
   <nav class="navbar">
-    <a href="#">To-Do List</a>
-    <button class="mode-toggle" id="modeToggle">🌙 Blind Mode</button>
+    <a href="index.html">Calculator</a>
+    <button class="mode-toggle" id="modeToggle">🌙 Dark Mode</button>
   </nav>
 
   <!-- ===== To-Do Section ===== -->
@@ -202,7 +202,7 @@
 
     <!-- Input Area -->
     <div class="input-group mb-3">
-      <input type="text" id="todoInput" class="form-control" placeholder="Enter a new task..." />
+      <input type="text" id="todoInput" class="form-control" placeholder="Enter a new task..." style="color: #33ffcc;" />
       <button class="btn btn-add" id="addBtn">Add</button>
     </div>
 
@@ -235,7 +235,7 @@
         document.body.classList.add("light-mode");
         modeToggle.textContent = "🌙 Dark Mode";
       } else {
-        modeToggle.textContent = "☀️ Light Mode";
+        modeToggle.textContent = "☀️ Blind Mode";
       }
     };
 
@@ -295,10 +295,10 @@
     modeToggle.addEventListener("click", () => {
       document.body.classList.toggle("light-mode");
       if (document.body.classList.contains("light-mode")) {
-        modeToggle.textContent = "🌙 Bliind Mode";
+        modeToggle.textContent = "🌙 Dark Mode";
         localStorage.setItem("mode", "light");
       } else {
-        modeToggle.textContent = "☀️ Light Mode";
+        modeToggle.textContent = "☀️ Blind Mode";
         localStorage.setItem("mode", "dark");
       }
     });

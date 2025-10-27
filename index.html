@@ -217,7 +217,7 @@
   <!-- Top bar with To-Do link and Dark/Light toggle -->
   <div class="top-bar">
     <a href="To-do.html" class="todo-link">📝 To-Do List</a>
-    <button class="mode-toggle" id="modeToggle">🌙 Blind Mode</button>
+    <button class="mode-toggle" id="modeToggle">🌙 Dark Mode</button>
   </div>
 
   <!-- Calculator -->
@@ -308,14 +308,14 @@
     const savedTheme = localStorage.getItem('calculatorTheme');
     if (savedTheme === 'light') {
       document.body.classList.add('light-mode');
-      modeToggle.textContent = '🌞 Light Mode';
+      modeToggle.textContent = '🌞 Blind Mode';
     }
 
     // Toggle theme
     modeToggle.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
       const isLightMode = document.body.classList.contains('light-mode');
-      modeToggle.textContent = isLightMode ? '🌞 Light Mode' : '🌙 Dark Mode';
+      modeToggle.textContent = isLightMode ? '🌞 Blind Mode' : '🌙 Dark Mode';
       localStorage.setItem('calculatorTheme', isLightMode ? 'light' : 'dark');
     });
   </script>
